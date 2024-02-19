@@ -9,7 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-poppins), sans-serif;
-  outline: 1px red solid; /*CSS Layout Debugging*/
+  /* outline: 1px red solid; */
 }
 
 .bg {
