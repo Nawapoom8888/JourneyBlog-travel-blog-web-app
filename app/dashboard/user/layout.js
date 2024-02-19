@@ -10,7 +10,7 @@ export default function layout(props) {
   const router = useRouter();
   const { data, status } = useSession();
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <BodyWrapper>
