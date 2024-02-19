@@ -39,12 +39,15 @@ export default function BlogItem(props) {
             </Link>
           </div>
 
-          <div className="border-test mb-2 flex w-full gap-2">
-            {props.blog.category.split(/[\s,]+/).map((tag) => (
-              <div className="border-test rounded-xl bg-cyan-600 px-[8px] py-[1px] text-[10px] font-medium text-white">
-                {tag}
-              </div>
-            ))}
+          <div className="border-test mb-2 flex w-full flex-wrap gap-2 overflow-hidden">
+            {props.blog.category
+              .split(/[\s,]+/)
+              .slice(0, 5)
+              .map((tag) => (
+                <div className="border-test rounded-xl bg-cyan-600 px-[8px] py-[1px] text-[10px] font-medium text-white">
+                  {tag}
+                </div>
+              ))}
           </div>
 
           <div className="border-test mb-4 overflow-hidden">

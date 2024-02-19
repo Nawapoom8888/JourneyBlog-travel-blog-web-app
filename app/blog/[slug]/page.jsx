@@ -38,7 +38,7 @@ export default async function page({ params }) {
 
   return (
     <BodyWrapper>
-      <div className="border-test mb-2 text-left">
+      <div className="border-test mb-6 text-left sm:mb-2">
         <Link href={`/blog/${blog.slug}`} className="text-3xl font-bold">
           {blog.title}
         </Link>
@@ -77,9 +77,9 @@ export default async function page({ params }) {
           className="border-test mb-6 break-all text-sm"
         ></div>
 
-        <div className="border-test flex items-center justify-start">
-          <p className="me-3 text-sm font-medium">Tags : </p>
-          <div className="flex gap-2">
+        <div className="border-test flex items-start justify-start">
+          <p className="me-3 whitespace-nowrap text-sm font-medium">Tags : </p>
+          <div className="flex flex-wrap gap-2">
             {blog.category.split(/[\s,]+/).map((tag) => (
               <div className="border-test rounded-xl bg-cyan-600 px-[8px] py-[1px] text-[10px] font-medium text-white">
                 {tag}
