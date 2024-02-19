@@ -23,7 +23,9 @@ export default function userBlogUpdate({ params }) {
 
   async function getBlog() {
     try {
-      const response = await fetch(`${process.env.API}/blog/${params.slug}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/blog/${params.slug}`,
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

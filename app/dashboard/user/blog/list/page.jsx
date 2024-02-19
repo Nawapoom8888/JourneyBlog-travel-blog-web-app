@@ -8,7 +8,7 @@ async function getMyBlogs() {
   const nextCookies = cookies();
   const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
   // console.log("nextAuthSessionToken", nextAuthSessionToken);
-  const apiUrl = `${process.env.API}/user/my-blogs`;
+  const apiUrl = `${process.env.NEXT_PUBLIC_API}/user/my-blogs`;
   const options = {
     method: "GET",
     // cache: "no-store",

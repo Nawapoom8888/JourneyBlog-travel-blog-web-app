@@ -52,18 +52,21 @@ export default function page() {
   // Handle form submit to create blog in API routes.
   const createBlog = async () => {
     try {
-      const response = await fetch(`${process.env.API}/admin/blog`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/admin/blog`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            content,
+            category,
+            image,
+          }),
         },
-        body: JSON.stringify({
-          title,
-          content,
-          category,
-          image,
-        }),
-      });
+      );
       if (response.ok) {
         router.push("/dashboard/admin");
         toast.success("Blog created successfully");

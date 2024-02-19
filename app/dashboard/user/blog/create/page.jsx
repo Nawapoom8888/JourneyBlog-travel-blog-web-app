@@ -54,7 +54,7 @@ export default function page() {
   // Handle form submit to create blog in API routes.
   const createBlog = async () => {
     try {
-      const response = await fetch(`${process.env.API}/user/blog`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/user/blog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

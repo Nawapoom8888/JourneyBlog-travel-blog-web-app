@@ -7,7 +7,7 @@ async function getLikedBlogs() {
   const nextCookies = cookies();
   const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
   // console.log("nextAuthSessionToken", nextAuthSessionToken);
-  const apiUrl = `${process.env.API}/user/liked-blogs`;
+  const apiUrl = `${process.env.NEXT_PUBLIC_API}/user/liked-blogs`;
   const options = {
     method: "GET",
     // cache: "no-store",

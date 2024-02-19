@@ -8,7 +8,7 @@ import Image from "next/image";
 dayjs.extend(relativeTime);
 
 async function getBlog(slug) {
-  const apiUrl = `${process.env.API}/blog/${slug}`;
+  const apiUrl = `${process.env.NEXT_PUBLIC_API}/blog/${slug}`;
 
   const options = {
     method: "GET",

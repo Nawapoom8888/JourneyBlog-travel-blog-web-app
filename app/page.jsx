@@ -11,15 +11,18 @@ async function getBlogs(searchParams) {
   const searchQuery = new URLSearchParams(urlParams).toString();
   console.log(searchQuery); // page=1
 
-  const response = await fetch(`${process.env.API}/blog?${searchQuery}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      // Add any additional headers if required
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/blog?${searchQuery}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Add any additional headers if required
+      },
+      // cache: "no-store", // NEVER USE THIS ANYWHERE
+      next: { revalidate: 1 },
     },
-    // cache: "no-store", // NEVER USE THIS ANYWHERE
-    next: { revalidate: 1 },
-  });
+  );
 
   if (!response.ok) {
     console.log("Failed to fetch blogs => ", response);
@@ -31,7 +34,7 @@ async function getBlogs(searchParams) {
 }
 
 async function getAllBlogs() {
-  const response = await fetch(`${process.env.API}/all-blogs`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/all-blogs`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

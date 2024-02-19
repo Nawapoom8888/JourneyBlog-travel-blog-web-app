@@ -23,7 +23,9 @@ export default function AdminBlogUpdate({ params }) {
 
   async function getBlog() {
     try {
-      const response = await fetch(`${process.env.API}/blog/${params.slug}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/blog/${params.slug}`,
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -74,18 +76,21 @@ export default function AdminBlogUpdate({ params }) {
 
   const updateBlog = async () => {
     try {
-      const response = await fetch(`${process.env.API}/admin/blog/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/admin/blog/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            content,
+            category,
+            image,
+          }),
         },
-        body: JSON.stringify({
-          title,
-          content,
-          category,
-          image,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error("Failed to update blog");
       }

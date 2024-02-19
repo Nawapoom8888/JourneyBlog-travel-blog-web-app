@@ -17,7 +17,10 @@ export default function LikeButton({ blog }) {
     if (status !== "authenticated") {
       toast.error("Please login to like");
       router.push(
-        `/login?callbackUrl=${process.env.API.replace("/api", "")}${pathname}`,
+        `/login?callbackUrl=${process.env.NEXT_PUBLIC_API.replace(
+          "/api",
+          "",
+        )}${pathname}`,
       );
       return;
     }
@@ -42,7 +45,7 @@ export default function LikeButton({ blog }) {
         };
 
         const response = await fetch(
-          `${process.env.API}/user/blog/like`,
+          `${process.env.NEXT_PUBLIC_API}/user/blog/like`,
           options,
         );
 
@@ -78,7 +81,7 @@ export default function LikeButton({ blog }) {
       };
 
       const response = await fetch(
-        `${process.env.API}/user/blog/unlike`,
+        `${process.env.NEXT_PUBLIC_API}/user/blog/unlike`,
         options,
       );
 

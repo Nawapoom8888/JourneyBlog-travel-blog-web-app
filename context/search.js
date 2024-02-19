@@ -14,7 +14,7 @@ export const SearchProvider = ({ children }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${process.env.API}/search?searchQuery=${searchQuery}`,
+        `${process.env.NEXT_PUBLIC_API}/search?searchQuery=${searchQuery}`,
       );
 
       if (!response.ok) {

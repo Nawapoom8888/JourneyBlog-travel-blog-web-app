@@ -12,15 +12,18 @@ async function getBlogs(searchParams) {
   const searchQuery = new URLSearchParams(urlParams).toString();
   // console.log(searchQuery); // page=1
 
-  const response = await fetch(`${process.env.API}/blog?${searchQuery}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      // Add any additional headers if required
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/blog?${searchQuery}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Add any additional headers if required
+      },
+      // cache: "no-store", // NEVER USE THIS ANYWHERE
+      next: { revalidate: 1 },
     },
-    // cache: "no-store", // NEVER USE THIS ANYWHERE
-    next: { revalidate: 1 },
-  });
+  );
 
   if (!response.ok) {
     console.log("Failed to fetch blogs => ", response);
@@ -42,9 +45,12 @@ export default async function Home({ searchParams = { page: "1" } }) {
   const handleDelete = async (id) => {
     console.log(id);
     try {
-      const response = await fetch(`${process.env.API}/admin/blog/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/admin/blog/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
       if (!response.ok) {
         throw new Error("Failed to delete blog");
       }
