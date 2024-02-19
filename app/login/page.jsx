@@ -45,7 +45,7 @@ export default function page() {
     <div style={{ height: "calc(100vh - 5rem)" }} className="w-full px-6">
       <div className="border-test mx-auto flex h-full w-full max-w-5xl items-center justify-center py-12">
         <div className="border-test grid h-[30rem] grid-cols-1 overflow-hidden rounded-3xl shadow-lg max-md:mx-auto max-md:max-w-[30rem] md:w-full md:grid-cols-[65%_35%]">
-          <div className="h-full w-full bg-blue-900 max-md:hidden">
+          <div className="h-full w-full max-md:hidden">
             <Image
               src="/images/login-bg.jpg"
               alt="login-background"
