@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { FaCamera } from "react-icons/fa";
+import Image from "next/image";
 
 export default function page() {
   const router = useRouter();
@@ -84,15 +85,13 @@ export default function page() {
         <div className="flex w-full flex-col items-center justify-center">
           <div className="mb-4 h-[18rem] w-full">
             {image ? (
-              <div
-                style={{
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-                className="h-full w-full"
-              ></div>
+              <Image
+                src={image}
+                width={2000}
+                height={1000}
+                style={{ objectFit: "cover", height: "100%", width: "100%" }}
+                alt={title}
+              />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-gray-300">
                 <FaCamera className="text-6xl text-gray-500" />

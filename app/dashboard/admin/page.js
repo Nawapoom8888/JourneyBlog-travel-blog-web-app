@@ -49,7 +49,7 @@ export default async function Home({ searchParams = { page: "1" } }) {
         throw new Error("Failed to delete blog");
       }
       // router.back();
-      window.location.href = "/dashboard/admin/blog/list";
+      window.location.href = "/dashboard/admin";
       toast.success("Blog deleted successfully");
     } catch (error) {
       console.error("Error deleting blog:", error);

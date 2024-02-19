@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
+import Image from "next/image";
 
 export default function AdminBlogUpdate({ params }) {
   const [id, setId] = useState("");
@@ -99,17 +100,14 @@ export default function AdminBlogUpdate({ params }) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API}/admin/blog/${id}`,
-        {
-          method: "DELETE",
-        },
-      );
+      const response = await fetch(`${process.env.API}/admin/blog/${id}`, {
+        method: "DELETE",
+      });
       if (!response.ok) {
         throw new Error("Failed to delete blog");
       }
       // router.back();
-      window.location.href = "/dashboard/admin/blog/list";
+      window.location.href = "/dashboard/admin";
       toast.success("Blog deleted successfully");
     } catch (error) {
       console.error("Error deleting blog:", error);
@@ -124,17 +122,13 @@ export default function AdminBlogUpdate({ params }) {
       <div className="flex flex-col justify-between gap-5">
         <div className="flex w-full flex-col items-center justify-center">
           <div className="mb-4 h-[18rem] w-full">
-            {image && (
-              <div
-                style={{
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-                className="h-full w-full"
-              ></div>
-            )}
+            <Image
+              src={image || "/images/default-img.jpg"}
+              width={2000}
+              height={1000}
+              style={{ objectFit: "cover", height: "100%", width: "100%" }}
+              alt={title}
+            />
           </div>
 
           <div className="border-test w-full">

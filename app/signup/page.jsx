@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
@@ -58,10 +59,12 @@ export default function page() {
       <div className="border-test mx-auto flex h-full w-full max-w-5xl items-center justify-center py-12">
         <div className="border-test grid h-[32rem] grid-cols-1 overflow-hidden rounded-3xl shadow-lg max-md:mx-auto max-md:max-w-[30rem] md:w-full md:grid-cols-[65%_35%]">
           <div className="h-full w-full bg-blue-900 max-md:hidden">
-            <img
-              src="https://images.unsplash.com/photo-1480996408299-fc0e830b5db1?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              className="h-full w-full object-cover brightness-90"
+            <Image
+              src="/images/signup-bg.jpg"
+              alt="signup-background"
+              width={2000}
+              height={2000}
+              className="h-full w-full object-cover brightness-95"
             />
           </div>
           <div className="border-test flex w-full flex-col items-center justify-center bg-white px-8 shadow-lg">

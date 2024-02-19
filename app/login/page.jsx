@@ -4,6 +4,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa6";
+import Image from "next/image";
 
 export default function page() {
   const router = useRouter();
@@ -45,10 +46,12 @@ export default function page() {
       <div className="border-test mx-auto flex h-full w-full max-w-5xl items-center justify-center py-12">
         <div className="border-test grid h-[30rem] grid-cols-1 overflow-hidden rounded-3xl shadow-lg max-md:mx-auto max-md:max-w-[30rem] md:w-full md:grid-cols-[65%_35%]">
           <div className="h-full w-full bg-blue-900 max-md:hidden">
-            <img
-              src="https://images.unsplash.com/photo-1544945582-052b29cd29e4?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              className="h-full w-full object-cover brightness-90"
+            <Image
+              src="/images/login-bg.jpg"
+              alt="login-background"
+              width={1800}
+              height={1500}
+              className="h-full w-full object-cover brightness-95"
             />
           </div>
           <div className="border-test flex h-full w-full flex-col items-center justify-center bg-white p-8 shadow-lg">

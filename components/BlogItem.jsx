@@ -5,6 +5,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import LikeButton from "./LikeButton";
 import { FaUser } from "react-icons/fa6";
 import { MdAccessTime } from "react-icons/md";
+import Image from "next/image";
 
 dayjs.extend(relativeTime);
 
@@ -15,19 +16,13 @@ export default function BlogItem(props) {
         className="border-test mb-2 overflow-hidden rounded-lg sm:mb-0"
         href={`/blog/${props.blog.slug}`}
       >
-        {props.blog.image ? (
-          <div
-            className="h-full w-full "
-            style={{
-              backgroundImage: `url(${props.blog.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
-        ) : (
-          <div className="h-full w-full bg-cyan-600" />
-        )}
+        <Image
+          src={props?.blog?.image || "/images/default-img.jpg"}
+          width={500}
+          height={500}
+          style={{ objectFit: "cover", height: "100%", width: "100%" }}
+          alt={props.blog.title}
+        />
       </Link>
 
       <div className="border-test flex w-full flex-col flex-wrap justify-between pb-3  pt-1 sm:px-4">

@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import BodyWrapper from "@/components/BodyWrapper";
 import LikeButton from "@/components/LikeButton";
+import Image from "next/image";
 dayjs.extend(relativeTime);
 
 async function getBlog(slug) {
@@ -54,22 +55,19 @@ export default async function page({ params }) {
           </p>
         </div>
         <div className="border-test me-1 flex gap-[5px]">
-          {/* <p>❤{blog?.likes?.length} likes</p> */}
           <LikeButton blog={blog} />
           <p className="text-gray-600">Likes</p>
         </div>
       </div>
 
-      <div className="mb-6 h-[18rem] w-full sm:h-[30rem]">
-        <div
-          className="h-full w-full rounded-lg"
-          style={{
-            backgroundImage: `url(${blog.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+      <div className="mb-6 h-[18rem] w-full overflow-hidden rounded-lg sm:h-[30rem]">
+        <Image
+          src={blog?.image || "/images/default-img.jpg"}
+          width={2000}
+          height={1000}
+          style={{ objectFit: "cover", height: "100%", width: "100%" }}
+          alt={blog.title}
+        />
       </div>
       <div className="border-test w-full">
         <div

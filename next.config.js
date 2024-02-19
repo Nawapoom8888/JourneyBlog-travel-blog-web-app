@@ -12,6 +12,16 @@ const nextConfig = {
     CLOUDINARY_UPLOAD_PRESET: config.CLOUDINARY_UPLOAD_PRESET,
     CLOUDINARY_URL: config.CLOUDINARY_URL,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        // port: '',
+        // pathname: '/account123/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
