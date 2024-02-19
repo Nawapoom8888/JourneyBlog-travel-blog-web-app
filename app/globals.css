@@ -2,26 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"); */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-poppins), sans-serif;
+  /* outline: 1px red solid; */ /*CSS Layout Debugging*/
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
+.bg {
+  background: rgb(96, 165, 250);
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    45deg,
+    rgba(96, 165, 250, 1) 0%,
+    rgba(147, 197, 253, 1) 12%,
+    rgba(165, 243, 252, 1) 49%,
+    rgba(167, 243, 208, 1) 87%,
+    rgba(134, 239, 172, 1) 100%
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
