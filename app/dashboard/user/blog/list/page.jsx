@@ -1,41 +1,31 @@
-import BlogItem from "@/components/BlogItem";
-import BlogsList from "@/components/BlogsList";
-import BodyWrapper from "@/components/BodyWrapper";
+"use client";
+import React from "react";
 import Link from "next/link";
-import { cookies } from "next/headers";
+import BlogItem from "@/components/BlogItem";
 
-async function getMyBlogs() {
-  const nextCookies = cookies();
-  const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
-  // console.log("nextAuthSessionToken", nextAuthSessionToken);
-  const apiUrl = `${process.env.NEXT_PUBLIC_API}/user/my-blogs`;
-  const options = {
-    method: "GET",
-    // cache: "no-store",
-    next: { revalidate: 1 },
-    headers: {
-      Cookie: `next-auth.session-token=${nextAuthSessionToken?.value}`,
-    },
-  };
-  try {
-    const response = await fetch(apiUrl, options);
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch: ${response.status} ${response.statusText}`,
+export default function page() {
+  const [myBlogs, setMyBlogs] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/user/my-blogs`,
       );
+      if (!response.ok) {
+        toast.error("Failed to fetch my blogs");
+        throw new Error("Failed to fetch my blogs");
+      } else {
+        const data = await response.json();
+        setMyBlogs(data);
+      }
+    } catch (error) {
+      console.log(error);
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-export default async function Home() {
-  const myBlogs = await getMyBlogs();
-
-  console.log("hi");
+  };
 
   // const handleDelete = async (id) => {
   //   console.log(id);
