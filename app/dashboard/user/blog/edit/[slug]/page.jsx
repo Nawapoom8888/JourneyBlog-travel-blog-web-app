@@ -71,18 +71,21 @@ export default function userBlogUpdate({ params }) {
 
   const updateBlog = async () => {
     try {
-      const response = await fetch(`${process.env.API}/user/blog/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/user/blog/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            content,
+            category,
+            image,
+          }),
         },
-        body: JSON.stringify({
-          title,
-          content,
-          category,
-          image,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error("Failed to update blog");
       }
@@ -97,9 +100,12 @@ export default function userBlogUpdate({ params }) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${process.env.API}/user/blog/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/user/blog/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
       if (!response.ok) {
         throw new Error("Failed to delete blog");
       }
