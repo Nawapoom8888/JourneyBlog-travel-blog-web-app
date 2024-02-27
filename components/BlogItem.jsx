@@ -54,8 +54,8 @@ export default function BlogItem(props) {
             <div
               dangerouslySetInnerHTML={{
                 __html:
-                  props.blog.content.length > 140
-                    ? `${props.blog.content.substring(0, 140)}...`
+                  props.blog.content.length > 200
+                    ? `${props.blog.content.substring(0, 200)}...`
                     : props.blog.content,
               }}
               className="break-all text-xs text-gray-600"
