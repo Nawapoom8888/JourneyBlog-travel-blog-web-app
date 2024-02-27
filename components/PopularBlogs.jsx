@@ -18,8 +18,9 @@ export default function PopularBlogs(props) {
           : props.blog.title}
       </Link>
 
-      <div className="mt-1 text-xs">
+      <div className="mt-1 flex gap-1 text-xs">
         <LikeButton blog={props.blog} />
+        <p className="">Likes</p>
       </div>
     </div>
   );

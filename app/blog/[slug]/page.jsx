@@ -51,7 +51,7 @@ export default async function page({ params }) {
           </div>
 
           <p className="text-muted">
-            Posted on {dayjs(blog.updatedAt).format("DD MMMM YYYY, HH:mm")}
+            Posted on {dayjs(blog.createdAt).format("DD MMMM YYYY, HH:mm")}
           </p>
         </div>
         <div className="border-test me-1 flex gap-[5px]">

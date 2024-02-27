@@ -63,19 +63,20 @@ export default function BlogItem(props) {
           </div>
         </div>
 
-        <div className="border-test grid grid-cols-[1fr_9rem_1fr] text-gray-600">
+        <div className="border-test grid grid-cols-3 text-gray-600">
           <div className="border-test flex items-center gap-2 text-xs">
             <FaUser className="text-base" />
             <p className="">by {props.blog.postedBy?.name || "User"}</p>
           </div>
 
-          <div className="border-test flex items-center gap-2 text-xs">
+          <div className="border-test flex items-center justify-center gap-2 text-xs">
             <MdAccessTime className="text-lg" />
-            {dayjs(props.blog.updatedAt).format("DD MMMM YYYY")}
+            {dayjs(props.blog.createdAt).format("DD MMMM YYYY")}
           </div>
 
-          <div className="border-test flex items-center justify-end text-xs">
+          <div className="border-test flex items-center justify-end gap-1 text-xs">
             <LikeButton blog={props.blog} />
+            <p className="">Likes</p>
           </div>
         </div>
       </div>
