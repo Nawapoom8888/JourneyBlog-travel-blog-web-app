@@ -9,7 +9,7 @@ export default function loading() {
       <div className="border-test flex flex-col items-center justify-center gap-4">
         <svg
           aria-hidden="true"
-          class="h-20 w-20 animate-spin fill-cyan-600 text-gray-100"
+          className="h-20 w-20 animate-spin fill-cyan-600 text-gray-100"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

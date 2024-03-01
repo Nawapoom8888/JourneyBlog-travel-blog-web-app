@@ -3,6 +3,8 @@ import BodyWrapper from "@/components/BodyWrapper";
 import LatestBlogs from "@/components/LatestBlogs";
 import PopularBlogs from "@/components/PopularBlogs";
 import Link from "next/link";
+// export const dynamic = "force-dynamic";
+// export const revalidate = 3600; // revalidate at most every 1 second
 
 async function getBlogs(searchParams) {
   const urlParams = {
@@ -55,10 +57,19 @@ async function getAllBlogs() {
 
 export default async function Home({ searchParams = { page: "1" } }) {
   const { blogs, currentPage, totalPages } = await getBlogs(searchParams);
-  const { allBlogs } = await getAllBlogs();
+  // const { allBlogs } = await getAllBlogs();
+  // console.log(allBlogs);
 
   const hasPreviousPage = currentPage > 1;
   const hasNextPage = currentPage < totalPages;
+
+  let allBlogs = [];
+
+  for (let page = 1; page <= totalPages; page++) {
+    const searchParams = { page: page.toString() };
+    const { blogs } = await getBlogs(searchParams);
+    allBlogs = allBlogs.concat(blogs);
+  }
 
   return (
     <div>
@@ -71,8 +82,10 @@ export default async function Home({ searchParams = { page: "1" } }) {
                 <h1 className="text-xl font-semibold">Latest</h1>
               </div>
 
-              {allBlogs.slice(0, 5).map((blog) => (
-                <LatestBlogs blog={blog} />
+              {allBlogs.slice(0, 5).map((blog, index) => (
+                <div key={index}>
+                  <LatestBlogs blog={blog} />
+                </div>
               ))}
             </div>
             <div className="border-test w-full rounded-lg bg-white">
@@ -83,8 +96,10 @@ export default async function Home({ searchParams = { page: "1" } }) {
               {allBlogs
                 .sort((a, b) => b.likes.length - a.likes.length)
                 .slice(0, 5)
-                .map((blog) => (
-                  <PopularBlogs blog={blog} />
+                .map((blog, index) => (
+                  <div key={index}>
+                    <PopularBlogs blog={blog} />
+                  </div>
                 ))}
             </div>
           </div>
@@ -111,6 +126,7 @@ export default async function Home({ searchParams = { page: "1" } }) {
                       : "border-2 border-gray-300 bg-transparent"
                   }`}
                   href={`?page=${page}`}
+                  // onClick={handleReload}
                 >
                   {page}
                 </Link>
@@ -121,6 +137,7 @@ export default async function Home({ searchParams = { page: "1" } }) {
               <Link
                 className="border-2 border-cyan-600 bg-cyan-600 px-4 py-2 text-gray-100"
                 href={`?page=${currentPage + 1}`}
+                // onClick={handleReload}
               >
                 Next
               </Link>

@@ -1,10 +1,6 @@
 import React from "react";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
 import LikeButton from "./LikeButton";
-
-dayjs.extend(relativeTime);
 
 export default function PopularBlogs(props) {
   return (

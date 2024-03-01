@@ -43,8 +43,11 @@ export default function BlogItem(props) {
             {props.blog.category
               .split(/[\s,]+/)
               .slice(0, 5)
-              .map((tag) => (
-                <div className="border-test rounded-xl bg-cyan-600 px-[8px] py-[1px] text-[10px] font-medium text-white">
+              .map((tag, index) => (
+                <div
+                  className="border-test rounded-xl bg-cyan-600 px-[8px] py-[1px] text-[10px] font-medium text-white"
+                  key={index}
+                >
                   {tag}
                 </div>
               ))}
